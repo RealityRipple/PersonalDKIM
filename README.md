@@ -2,7 +2,7 @@
 Add a DKIM header to your outgoing messages.
 
 #### Supports
- * Thunderbird [?? - 60.*]
+ * Thunderbird [38.0.1 - 60.*]
 
 ## Building
 Simply download the contents of the repository and pack the contents (sans git data) into a .zip file. Then, rename the file to .xpi and drag into the browser.
@@ -12,7 +12,7 @@ You can grab the latest release from the [Official Web Site](//realityripple.com
 
 ## Caveats
 Unfortunately, there are currently multiple issues with PersonalDKIM's implementation.
-> First off, the message body is not hashed in the case of HTML or mixed content messages (including plain-text with attachments). For these messages, the body length to be hashed is set to "0". Thunderbird does not provide a fully formatted mail body during the send process.
+> First off, the message body is not hashed in the case of HTML or mixed content messages (including plain-text with attachments). Additionally, the message type can not be determined in versions of Thunderbird below 52. For these messages, the body length to be hashed is set to "0". Thunderbird does not provide a fully formatted mail body during the send process.
 
 > Secondly, many headers are not set in time for the signing process. Particularly the Date, Message-ID, and MIME headers. This means that the signed header list is limited to the To, From, and Subject entries in most cases.
 

@@ -171,18 +171,21 @@ var personalDKIM =
   var bodyHash = "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=";
   var bodyLen = "l=0; ";
   var msgType = "Unknown";
-  if (gMsgCompose.compFields.deliveryFormat === 1)
-   msgType = "Plain";
-  else if (gMsgCompose.compFields.deliveryFormat === 2)
-   msgType = "HTML";
-  else if (gMsgCompose.compFields.deliveryFormat === 3)
-   msgType = "Plain+HTML";
-  else if (gMsgCompose.compFields.deliveryFormat === 4)
+  if ('deliveryFormat' in gMsgCompose.compFields)
   {
-   if (gMsgCompose.compFields.forcePlainText == true)
+   if (gMsgCompose.compFields.deliveryFormat === 1)
     msgType = "Plain";
-   else
+   else if (gMsgCompose.compFields.deliveryFormat === 2)
     msgType = "HTML";
+   else if (gMsgCompose.compFields.deliveryFormat === 3)
+    msgType = "Plain+HTML";
+   else if (gMsgCompose.compFields.deliveryFormat === 4)
+   {
+    if (gMsgCompose.compFields.forcePlainText == true)
+     msgType = "Plain";
+    else
+     msgType = "HTML";
+   }
   }
   if (msgType == "Plain")
   {
