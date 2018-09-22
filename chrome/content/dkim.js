@@ -58,16 +58,6 @@ var personalDKIM =
   }
   return String.fromCharCode.apply(String, bytes);    
  },
- _array2hex: function(arr)
- {
-  return arr.reduce((output, elem) => 
-    (output + ('0' + elem.toString(16)).slice(-2)),
-    '');
- },
- _array2bin: function(arr)
- {
-  return personalDKIM._hex2bin(personalDKIM._array2hex(arr));
- },
  _cleanFrom: function(sFrom)
  {
   if (sFrom.indexOf("<") < 0)
