@@ -1,0 +1,4 @@
+content		pdkim									chrome/content/
+overlay		chrome://messenger/content/messengercompose/messengercompose.xul	chrome://pdkim/content/messengercompose.xul
+skin		pdkim				skin					chrome/skin/
+locale		pdkim				en-US					chrome/locale/en-US/

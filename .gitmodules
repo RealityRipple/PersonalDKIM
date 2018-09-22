@@ -1,0 +1,4 @@
+[submodule "chrome/content/jsrsasign"]
+	path = chrome/content/jsrsasign
+	url = git@github.com:kjur/jsrsasign.git
+	branch = master

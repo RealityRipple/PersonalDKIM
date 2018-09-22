@@ -1,0 +1,14 @@
+<!ENTITY window-title "DKIM Options">
+<!ENTITY domain-box.label "DKIM Domain">
+<!ENTITY domain.help "Make sure a DKIM record with your public key is available at">
+<!ENTITY domain.label "Host:">
+<!ENTITY selector.label "Selector:">
+<!ENTITY key.label "Private Key">
+<!ENTITY key.help "Your private key should be a PKCS#1, #5, or #8 1024-bit key matching the published public key for your Host and Selector. At this time, 2048-bit and larger are not supported by Thunderbird's header parser.">
+<!ENTITY keycmd.label "Browse...">
+<!ENTITY keypass.label "Password:">
+<!ENTITY algo.label "Hashing Function">
+<!ENTITY algohash.label "Algorithm:">
+<!ENTITY algo.help1 "&#x2022; SHA-256 is recommended.">
+<!ENTITY algo.help2 "&#x2022; SHA-1 is for low-end machines.">
+<!ENTITY algo.help3 "&#x2022; Other options may be unsupported.">

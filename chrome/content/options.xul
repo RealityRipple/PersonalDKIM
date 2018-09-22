@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://pdkim/locale/options.dtd">
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        id="pdkimOptionsWindow"
+        persist="screenX screenY"
+        title="&window-title;"
+        buttons="accept, cancel"
+        onload="personalDKIMOptions.initOptions();"
+        ondialogaccept="return personalDKIMOptions.saveOptions();"
+        maxwidth="450">
+ <script type="application/javascript" src="chrome://pdkim/content/jsrsasign/jsrsasign-all-min.js" />
+ <script type="application/javascript" src="chrome://pdkim/content/options.js" />
+ <hbox>
+  <vbox flex="1">
+   <groupbox orient="vertical">
+    <caption label="&domain-box.label;" />
+    <vbox flex="1">
+     <hbox>
+      <vbox>
+       <spacer flex="1" />
+       <label control="domainInput" value="&domain.label;" />
+       <spacer flex="1" />
+       <label control="selectorInput" value="&selector.label;" />
+       <spacer flex="1" />
+      </vbox>
+      <vbox>
+       <textbox id="domainInput" maxlength="999" width="150" oninput="personalDKIMOptions.changeDomain();" />
+       <hbox>
+        <textbox id="selectorInput" maxlength="999" width="125" oninput="personalDKIMOptions.changeDomain();" />
+        <spacer flex="1" />
+       </hbox>
+      </vbox>
+     </hbox>
+     <spacer flex="1" />
+     <description flex="1">&domain.help;</description>
+     <hbox>
+      <spacer flex="1" />
+      <textbox readonly="true" id="domainPreview" width="175" value="[Selector]._domainkey.[Host]" class="plain" />
+      <spacer flex="1" />
+     </hbox>
+    </vbox>
+   </groupbox>
+   <groupbox orient="vertical">
+    <caption label="&algo.label;" />
+    <vbox flex="1">
+     <hbox>
+      <vbox>
+       <spacer flex="1" />
+       <label control="algoHash" value="&algohash.label;" />
+       <spacer flex="1" />
+      </vbox>
+      <menulist id="algoHash">
+       <menupopup>
+        <menuitem label="MD5" value="MD5" />
+        <menuitem label="SHA-1" value="SHA1" />
+        <menuitem label="SHA-224" value="SHA224" />
+        <menuitem label="SHA-256" value="SHA256"  />
+        <menuitem label="SHA-384" value="SHA384" />
+        <menuitem label="SHA-512" value="SHA512" />
+        <menuitem label="RIPEMED-160" value="RIPEMED160" />
+       </menupopup>
+      </menulist>
+      <spacer flex="1" />
+     </hbox>
+     <spacer flex="1" />
+     <description flex="1">&algo.help1;</description>
+     <description flex="1">&algo.help2;</description>
+     <description flex="1">&algo.help3;</description>
+    </vbox>
+   </groupbox>
+  </vbox>
+  <vbox flex="1">
+   <groupbox orient="vertical" flex="1">
+    <caption label="&key.label;" />
+    <vbox flex="1">
+     <description flex="1">&key.help;</description>
+     <hbox>
+      <vbox>
+       <spacer flex="1" />
+       <description id="keyInfo">No Private Key</description>
+       <spacer flex="1" />
+      </vbox>
+      <spacer flex="1" />
+      <button id="cmdKey" class="dialog-button" label="&keycmd.label;" oncommand="personalDKIMOptions.importFile();" />
+     </hbox>
+     <textbox id="keyInput" width="200" multiline="true" flex="1" oninput="personalDKIMOptions.changeKey();" />
+     <hbox>
+      <vbox>
+       <spacer flex="1" />
+       <label control="keyPass" value="&keypass.label;" />
+       <spacer flex="1" />
+      </vbox>
+      <spacer flex="1" />
+      <textbox id="keyPass" maxlength="999" width="200" type="password" disabled="true" />
+     </hbox>
+    </vbox>
+   </groupbox>
+  </vbox>
+ </hbox>
+</dialog>

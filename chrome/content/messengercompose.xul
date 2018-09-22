@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay SYSTEM "chrome://pdkim/locale/overlay.dtd" >
+<overlay id="personalDKIMOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+ <script type="application/javascript" src="chrome://pdkim/content/jsrsasign/jsrsasign-all-min.js" />
+ <script type="application/javascript" src="chrome://pdkim/content/dkim.js" />
+</overlay>
