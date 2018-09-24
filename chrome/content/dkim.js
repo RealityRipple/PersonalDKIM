@@ -74,6 +74,42 @@ var personalDKIM =
   body = body.replace(/(\r\n)+$/g, "");
   return body + "\r\n";
  },
+ _wrapText: function(body, len = 72)
+ {
+  var out = "";
+  var sLines = body.split("\r\n");
+  for (var i = 0; i < sLines.length; i++)
+  {
+   var sLine = sLines[i];
+   if (sLine.length <= len)
+   {
+    out += sLine + "\r\n";
+    continue;
+   }
+   do
+   {
+    var segment = sLine.substring(0, len);
+    if (sLine.substring(len, len + 1) == " ")
+     segment += " ";
+    var segSpace = segment.lastIndexOf(" ");
+    if (segSpace == -1)
+    {
+     segSpace = sLine.indexOf(" ");
+     segment = sLine.substring(0, segSpace) + " ";
+     sLine = sLine.substring(segSpace + 1);
+    }
+    else
+    {
+     segment = segment.substring(0, segSpace) + " ";
+     sLine = sLine.substring(segSpace + 1);
+    }
+    out += segment + "\r\n";
+   }
+   while (sLine.length > len);
+   out += sLine + "\r\n";
+  }
+  return out;
+ },
  sending: function(evt)
  {
   var msg_type = personalDKIM._msgcomposeWindow.getAttribute( "msgtype" );  
@@ -206,7 +242,8 @@ var personalDKIM =
    }
    else
    {
-    body = gMsgCompose.editor.outputToString('text/plain', 1600);
+    body = gMsgCompose.editor.outputToString('text/plain', (0x20000 | 0x400 | 0x200 | 0x40 | 0x02));
+    body = personalDKIM._wrapText(body);
     body = personalDKIM._canonBody(body);
     bodyLen = "";
     bodyHash = btoa(personalDKIM._hex2bin(KJUR.crypto.Util.hashString(body, algoHash)));
