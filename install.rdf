@@ -3,7 +3,7 @@
  <Description about="urn:mozilla:install-manifest">
   <em:name>PersonalDKIM</em:name>
   <em:id>{EA4654A2-3B84-55D3-9490-54EDBF2C97CC}</em:id>
-  <em:version>0.2pre</em:version>
+  <em:version>0.3pre</em:version>
   <em:type>2</em:type>
   <!-- Thunderbird -->
   <em:targetApplication>
