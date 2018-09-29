@@ -243,7 +243,7 @@ var personalDKIM =
    else
    {
     body = gMsgCompose.editor.outputToString('text/plain', (0x20000 | 0x400 | 0x200 | 0x40 | 0x02));
-    body = personalDKIM._wrapText(body);
+    body = personalDKIM._wrapText(body, gMsgCompose.wrapLength);
     body = personalDKIM._canonBody(body);
     bodyLen = "";
     bodyHash = btoa(personalDKIM._hex2bin(KJUR.crypto.Util.hashString(body, algoHash)));
